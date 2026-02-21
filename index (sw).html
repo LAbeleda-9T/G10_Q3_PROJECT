@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Intramurals Team Checker</title>
+
+    <!-- BOOTSTRAP 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- PYSCRIPT -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.7.3/core.js"></script>
+
+<style>
+/* Body */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFFFFF; /* white background */
+    color: #0A0908; /* text dark */
+    margin: 0;
+    padding: 40px 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #22333B !important; /* deep blue */
+}
+
+.navbar-brand, .nav-link {
+    color: #EAE0D5 !important; /* cream */
+}
+
+.nav-link:hover {
+    color: #C6AC8F !important; /* warm tan */
+}
+
+/* Main container */
+.container.main-box {
+    max-width: 500px;
+    margin: 30px auto;
+    background-color: #EAE0D5; /* cream */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+h1 {
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #5E503F; /* brown */
+}
+
+/* Form labels */
+label.form-label {
+    font-weight: 600;
+    margin-top: 15px;
+    color: #5E503F; /* brown */
+}
+
+/* Select boxes */
+select.form-select {
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin-top: 5px;
+    border: 2px solid #5E503F; /* brown border */
+    background-color: #F5D6BA; /* lighter cream/tan */
+    color: #0A0908; /* dark text */
+    transition: all 0.3s ease;
+}
+
+select.form-select:focus {
+    outline: none;
+    border-color: #C6AC8F; /* warm tan */
+    box-shadow: 0 0 5px rgba(198,172,143,0.5);
+}
+
+/* Button */
+button.btn-dark {
+    background-color: #22333B; /* deep blue */
+    color: #EAE0D5; /* cream text */
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 10px 25px;
+    transition: all 0.3s ease;
+}
+
+button.btn-dark:hover {
+    background-color: #5E503F; /* brown on hover */
+    color: #FFFFFF;
+}
+
+/* Output box */
+#output {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #22333B; /* deep blue */
+    color: #EAE0D5; /* cream */
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    color: #5E503F; /* brown */
+    font-weight: 400;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Intramurals '26</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color:#C6AC8F;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index (st).html">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="index (sw).html">Team Checker</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html">List of players</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container main-box">
+
+    <h1>Intramurals Team Checker</h1>
+
+    <form>
+
+        <label class="form-label">Have you registered?</label>
+        <select class="form-select" id="register">
+            <option disabled selected>Choose your option</option>
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+        </select>
+
+        <label class="form-label mt-3">Have you availed medical clearance?</label>
+        <select class="form-select" id="clearance">
+            <option disabled selected>Choose your option</option>
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+        </select>
+
+        <label class="form-label mt-3">What grade level are you?</label>
+        <select class="form-select" id="level">
+            <option disabled selected>Choose your option</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+
+        <label class="form-label mt-3">What section are you?</label>
+        <select class="form-select" id="section">
+            <option disabled selected>Choose your option</option>
+            <option value="1">Emerald</option>
+            <option value="2">Ruby</option>
+            <option value="3">Sapphire</option>
+            <option value="4">Topaz</option>
+        </select>
+
+        <div class="text-center mt-4">
+            <button type="button" class="btn btn-dark px-4" py-click="intrams_team">Show Team</button>
+        </div>
+
+    </form>
+
+    <hr>
+
+    <div id="output" class="text-center">Intrams Team:</div>
+
+</div>
+
+<footer class="text-center mt-4">
+    <p>Simrandip Kaur | 10 - Topaz</p>
+</footer>
+
+<py-script src="main.py"></py-script>
+
+</body>
+</html>
